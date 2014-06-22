@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Esophogeal Cancer in People Like You</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Esophogeal Cancer in People Like You">
+  <meta name="author" content="llackey33">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Esophogeal Cancer in People Like You</h1>
+    <h2></h2>
+    <p>llackey33<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What is Esophogeal Cancer?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Cancer in your esophagus, which connects your throat to your stomach</li>
+<li>Typically diagnosed late, contributing to survival rates below 1 in 5</li>
+<li>Eighth most common cancer world-wide in 2012</li>
+<li>Preventing deaths may depend on
+
+<ul>
+<li>Getting potential cases to visit the doctor</li>
+<li>Getting people to change their behavior</li>
+</ul></li>
+</ul>
+
+<p>Source: <a href="http://en.wikipedia.org/wiki/Esophageal_cancer">http://en.wikipedia.org/wiki/Esophageal_cancer</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>What does this App do?</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Lets users determine how many people like them are diagnosed with esophogeal cancer</li>
+<li>Relies on simple pieces of information
+
+<ul>
+<li>Age</li>
+<li>Alcohol Consumption</li>
+<li>Smoking</li>
+</ul></li>
+<li>Result is based on a case-control study conducted in Ille-et-Vilaine, France</li>
+<li>User can use the result to determine whether they should talk to their doctor</li>
+</ul>
+
+<p>More Information: Breslow, N. E. and Day, N. E. (1980) Statistical Methods in Cancer Research. 1: The Analysis of Case-Control Studies. IARC Lyon / Oxford University Press.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>How does this App work?</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(datasets)
+data &lt;- esoph
+
+age &lt;- &quot;45-54&quot;          # 45-54 years old
+alc &lt;- &quot;0-39g/day&quot;      # 0-2 drinks per day
+tob &lt;- &quot;0-9g/day&quot;       # 0-9 cigarettes per day
+
+tmp &lt;- data[data$agegp == age &amp; data$alcgp == alc &amp; data$tobgp == tob, ]
+
+cases &lt;- sum(as.numeric(tmp$ncases))
+total &lt;- cases + sum(as.numeric(tmp$ncontrols))
+
+paste(&quot;Among people like you,&quot;, cases, &quot;out of&quot;, total, 
+      &quot;had esophogeal cancer.&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Among people like you, 1 out of 47 had esophogeal cancer.&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>What does the App look like?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="C:/Users/Leila/Dropbox/Coursera/DataScience/data products/app_pitch/screen_shot.PNG" width="500" height="500" ></p>
+
+<p><a href="https://llackey33.shinyapps.io/Esophogeal/">https://llackey33.shinyapps.io/Esophogeal/</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What is Esophogeal Cancer?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What does this App do?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How does this App work?'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='What does the App look like?'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,71 @@
+---
+title       : Esophogeal Cancer in People Like You
+subtitle    : 
+author      : llackey33
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## What is Esophogeal Cancer?
+
+* Cancer in your esophagus, which connects your throat to your stomach
+* Typically diagnosed late, contributing to survival rates below 1 in 5
+* Eighth most common cancer world-wide in 2012
+* Preventing deaths may depend on
+    * Getting potential cases to visit the doctor
+    * Getting people to change their behavior
+
+Source: http://en.wikipedia.org/wiki/Esophageal_cancer
+
+---  
+
+## What does this App do?
+
+* Lets users determine how many people like them are diagnosed with esophogeal cancer
+* Relies on simple pieces of information
+    * Age
+    * Alcohol Consumption
+    * Smoking
+* Result is based on a case-control study conducted in Ille-et-Vilaine, France
+* User can use the result to determine whether they should talk to their doctor
+
+More Information: Breslow, N. E. and Day, N. E. (1980) Statistical Methods in Cancer Research. 1: The Analysis of Case-Control Studies. IARC Lyon / Oxford University Press.
+
+---  
+
+## How does this App work?
+
+
+```r
+library(datasets)
+data <- esoph
+
+age <- "45-54"          # 45-54 years old
+alc <- "0-39g/day"      # 0-2 drinks per day
+tob <- "0-9g/day"       # 0-9 cigarettes per day
+
+tmp <- data[data$agegp == age & data$alcgp == alc & data$tobgp == tob, ]
+
+cases <- sum(as.numeric(tmp$ncases))
+total <- cases + sum(as.numeric(tmp$ncontrols))
+
+paste("Among people like you,", cases, "out of", total, 
+      "had esophogeal cancer.")
+```
+
+```
+## [1] "Among people like you, 1 out of 47 had esophogeal cancer."
+```
+
+---
+
+## What does the App look like?
+
+<img src="C:/Users/Leila/Dropbox/Coursera/DataScience/data products/app_pitch/screen_shot.PNG" width="500" height="500" >
+
+https://llackey33.shinyapps.io/Esophogeal/
